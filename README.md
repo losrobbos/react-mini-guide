@@ -1,6 +1,16 @@
 # React Projects
 
-In this folder please find React mini projects, demonstrating React concepts
+In this folder please find an intro to coding Web Projects, using the example of React.
+
+Web Projects are a bit more complex than just a mini project with some HTML pages. 
+
+In web projects usually we work in a TEAM and also work with significantly more FILES, sometimes at the same time. 
+
+Therefore we need to find ways to SPLIT our work the best way possible, avoiding working constantly on the same files, creating all sorts of conflict.
+
+Additionally we need to optimize the FILES before deployment, in order to have a performant web application. One common task is to MERGE (=bundle) all files of same kind (e.g. all JavaScript files) together, so the browser does not need to load to many files, before it can display a page. 
+
+Find here now some general concepts & terms that we usually have to deal with in web projects nowadays.
 
 ## Abbreviations & Terms for Web Projects
 
