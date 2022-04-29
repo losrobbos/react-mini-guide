@@ -20,9 +20,21 @@ The process that triggers the bundling & optimization. The result is usually a f
 
 The resulting "build" folder can be deployed to any free or paid hoster easily, e.g. GitHub pages, Netlify, Vercel or Heroku
 
-### WebPack
+### Webpack
 
 A famous bundler application for web projects. De facto standard of the past (gets more and more competition)
+
+### Dev Server
+
+A program that will launch your web project in the browser. Typically listens for your code changes and updates the code in the browser automatically, without a need to refresh.
+
+Typical examples: 
+- Live-Server
+- the Webpack dev server
+
+You use the dev server ONLY (!) during local development. The Dev Server starts your app, but does not optimize it for release.
+
+Once you are satisfied and reached a state that is worth RELEASING, you will BUILD the web project (=optimize the assets) and deploy the optimized BUILD.
 
 ### CRA => Create-React-App
 
@@ -32,15 +44,36 @@ So ideally - for basic projects - you just need to start the build process and c
 
 The package Create-React-App was created and is maintained by Facebook / Meta.
 
+#### Problems
+
+Creat-React-App creates a pretty bloated react project with several hundred NPM packages it depends on. 
+
+So the setup & install process for even a super basic web project is quite huge. 
+
+Also starting up a CRA project takes a considerable amount of time, due it starts the webpack dev server, which is quite slow.
+
+And due you have all this hundreds of dependencies, you can easily get into issues once any of these dependencies gets updated. Maybe this single package contains a bug or has again NEW dependencies with other packages, which could break the whole react app from even starting up.
+
+
 ### Vite
 
 An alternative to the CRA build tool which uses "esbuild" under the hood for bundling instead of webpack. 
 
 Esbuild is significantly faster compared to the WebPack bundler.
 
+Vite installs just the bare, necessary packages to get React up and running.
+
 Also you can setup not just React projects with it, also vanilla JS web projects or VueJS projects.
 
 This package is maintained by the VueJS community
+
+#### Problems
+
+Vite gets you up and running quickly and the initial experience is great.
+
+However: A lot of react specific NPM packages rely on the full blown setup of CRA.
+
+So in short: Quite some packages will not work with your Vite setup right away and you sometimes need to install the necessary packages that it depends on manually.
 
 
 
@@ -48,7 +81,7 @@ This package is maintained by the VueJS community
 
 ### Component
 
-A reusable "lego" piece in your website, e.g. a header, including its javascript logic
+A reusable "lego" piece in your website, e.g. a header, including its layout, style and javascript logic
 
 ### JSX
 
@@ -58,7 +91,9 @@ The use case for JSX is to get reusable layouts, where you can fill in different
 
 You can write an "HTML layout" once, and reuse it throughout your application.
 
-JSX is comparable to a javascript function that RETURNS HTML at the end, but different HTML depending on the INPUT variables. Different input variables => <b>same LAYOUT & STYLE, but different CONTENT</b>. 
+JSX is comparable to a javascript function that RETURNS HTML at the end, but different HTML depending on the INPUT variables. 
+
+Different input variables => <b>same LAYOUT & STYLE, but different CONTENT</b>. 
 
 This way you can e.g. create a list of todo cards, each having the same layout & style, but each having different content in the card.
 
@@ -79,11 +114,11 @@ And you pass in the actual DATA that should get displayed, using PROPS
 
 Example: 
 
-// Passing user data as PROP
 
 ```
 const user = { name: "Rob", age: 38 }
 
+// Passing user data as PROP
 return (
 	<UserCard user={ user } />
 )
@@ -104,11 +139,11 @@ const UserCard = ( { name, age } ) => {
 
 ### Rendering
 
-The process where React updates the DOM. 
+The process where React updates the DOM (the visible stuff in the browser)
 
 Typically this is triggered by some USER ACTION, e.g. the user filtering a list or adding a new item.
 
-The RENDERING is done by React automatically, whenever there IS something NEW / UPDATED data to render.
+The RENDERING is done by React automatically, whenever there is some NEW / UPDATED data to render.
 
 And the thing that TRIGGERS this rendering process is the so called STATE...
 
@@ -150,5 +185,4 @@ So learn it once, and you will have a solid foundation for modern web programmin
 I have created a commented list of resources if you are looking for some hints where you could got next ;)
 
 https://github.com/losrobbos/coding-advanced-resources
-
 
